@@ -1,24 +1,21 @@
 {
     "theme": {
         "name": "FoldableTheme",
-        "styles": ["default", "black", "green", "cyan", "red", "purple", "blue", "yellow"],
-        "version": "2.20",
+        "styles": ["default", "black", "blue", "cyan", "green", "purple", "red", "yellow"],
+        "version": "2.21",
         "sharedTheme": {
-            "useHeader": true,
-            "useLogo": false,
-            "isPortalSupport": true
-        },
-        "customStyles": {
-            "mainBackgroundColor": null
+            "isPortalSupport": true,
+            "useHeader": false,
+            "useLogo": false
         }
     },
     "portalUrl": "https://dvrpcgis.maps.arcgis.com",
     "appId": "",
     "authorizedCrossOriginDomains": [],
-    "title": "Bicycle Network Inventory",
+    "title": "Bicycle Facility Editor",
     "subtitle": "",
     "keepAppState": true,
-    "logo": "https://dvrpcgis.maps.arcgis.com/sharing/rest/content/items/${itemId}/resources/inConfig/5528326583161471.png",
+    "logo": "https://dvrpcgis.maps.arcgis.com/sharing/rest/content/items/${itemId}/resources/inConfig/7800835247463102.png",
     "geometryService": "https://utility.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer",
     "links": [],
     "widgetOnScreen": {
@@ -32,7 +29,7 @@
                 "relativeTo": "browser"
             },
             "version": "2.21",
-            "id": "themes_FoldableTheme_widgets_HeaderController_Widget_20",
+            "id": "themes_FoldableTheme_widgets_HeaderController_Widget_1",
             "name": "HeaderController"
         }, {
             "uri": "widgets/Scalebar/Widget",
@@ -42,7 +39,7 @@
                 "relativeTo": "map"
             },
             "version": "2.21",
-            "id": "widgets_Scalebar_Widget_21",
+            "id": "widgets_Scalebar_Widget_2",
             "name": "Scalebar",
             "config": {
                 "scalebar": {
@@ -61,7 +58,7 @@
                 "relativeTo": "map"
             },
             "version": "2.21",
-            "id": "widgets_Search_Widget_22",
+            "id": "widgets_Search_Widget_3",
             "name": "Search"
         }, {
             "uri": "widgets/Coordinate/Widget",
@@ -71,8 +68,14 @@
                 "relativeTo": "map"
             },
             "version": "2.21",
-            "id": "widgets_Coordinate_Widget_23",
+            "id": "widgets_Coordinate_Widget_4",
             "name": "Coordinate",
+            "config": {
+                "spatialReferences": [],
+                "decimalPlaces": 3,
+                "addSeparator": true,
+                "displayOrderLonLat": true
+            },
             "visible": false
         }, {
             "position": {
@@ -81,13 +84,11 @@
                 "relativeTo": "map"
             },
             "placeholderIndex": 1,
-            "id": "_24",
+            "id": "_5",
             "name": "Edit",
-            "label": "Add Bicycle Facilities",
             "version": "2.21",
             "closeable": true,
             "uri": "widgets/Edit/Widget",
-            "openAtStart": true,
             "config": {
                 "editor": {
                     "enableUndoRedo": true,
@@ -97,27 +98,17 @@
                         "cutVisible": false,
                         "reshapeVisible": false
                     },
-                    "honorSettingOfWebmap": true,
+                    "honorSettingOfWebmap": false,
                     "layerInfos": [{
                         "featureLayer": {
-                            "id": "LTS_BikeFac_edit_ez_9346"
+                            "id": "BikeFacilityEdit_6518"
                         },
                         "disableGeometryUpdate": false,
                         "allowCreate": true,
                         "allowDelete": true,
                         "fieldInfos": [{
-                            "fieldName": "objectid",
+                            "fieldName": "OBJECTID",
                             "label": "OBJECTID",
-                            "isEditable": false,
-                            "visible": false
-                        }, {
-                            "fieldName": "bikefacili_edit",
-                            "label": "Edit Bike Facility",
-                            "isEditable": true,
-                            "visible": true
-                        }, {
-                            "fieldName": "Shape__Length",
-                            "label": "Shape__Length",
                             "isEditable": false,
                             "visible": false
                         }, {
@@ -126,20 +117,10 @@
                             "isEditable": false,
                             "visible": false
                         }, {
-                            "fieldName": "Notes",
-                            "label": "Notes",
-                            "isEditable": true,
-                            "visible": true
-                        }, {
-                            "fieldName": "Status",
-                            "label": "Status",
-                            "isEditable": true,
-                            "visible": true
-                        }, {
-                            "fieldName": "ImpDate",
-                            "label": "Planned Implementation Date",
-                            "isEditable": true,
-                            "visible": true
+                            "fieldName": "Shape__Length",
+                            "label": "Shape__Length",
+                            "isEditable": false,
+                            "visible": false
                         }, {
                             "fieldName": "CreationDate",
                             "label": "CreationDate",
@@ -160,6 +141,26 @@
                             "label": "Editor",
                             "isEditable": false,
                             "visible": false
+                        }, {
+                            "fieldName": "FacilityType",
+                            "label": "Bicycle Facility Type",
+                            "isEditable": true,
+                            "visible": true
+                        }, {
+                            "fieldName": "Status",
+                            "label": "Status",
+                            "isEditable": true,
+                            "visible": true
+                        }, {
+                            "fieldName": "Notes",
+                            "label": "Notes",
+                            "isEditable": true,
+                            "visible": true
+                        }, {
+                            "fieldName": "ImpDate",
+                            "label": "Planned Implementation Date",
+                            "isEditable": true,
+                            "visible": true
                         }]
                     }],
                     "useFilterEdit": false,
@@ -169,6 +170,52 @@
                     "stickyMoveTolerance": 0,
                     "usingSaveButton": false
                 }
+            },
+            "openAtStart": true
+        }, {
+            "position": {
+                "left": 105,
+                "top": 45,
+                "height": 950,
+                "width" : 760,
+                "relativeTo": "map"
+            },
+            "placeholderIndex": 1,
+            "id": "_6",
+            "name": "About",
+            "version": "2.21",
+            "closeable": true,
+            "icon": "https://dvrpcgis.maps.arcgis.com/sharing/rest/content/items/${itemId}/resources/inConfig/8407942618005884.png",
+            "uri": "widgets/About/Widget",
+            "config": {
+                "about": {
+                    "aboutContent": "<span id=\"docs-internal-guid-b026071f-7fff-4fad-d1c6-502422b24648\" style=\"color: rgb(105, 105, 105);\"><p style=\"text-align: center; line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\"><font size=\"5\">DVRPC Bicycle Network Inventory<\/font><\/span><\/p><br /><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">DVRPC is seeking the help of local planning partners to keep our region\u2019s bicycle network inventory up to date. This data is used in a variety of analytic contexts, including DVRPC\u2019s Level of Traffic Stress (LTS) and regional travel demand models. Furthermore, the outputs of these analyses are used to shape our region. As a result, this map exists to ensure that DVRPC is aware of new facilities as they are constructed.<\/span><\/p><br /><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">Please use this map to inform DVRPC of new on- or off-street bicycle facilities missing from the data.  In addition, this map can collect data on existing features that might be inaccurate.  Planned projects that are funded and scheduled for implementation are also welcome here, using the \u201c<b>Status<\/b>\u201d dropdown and an estimated implementation date. If necessary, feel free to use the \u201c<\/span><span style=\"font-size: 11pt; font-weight: 700; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">Notes<\/span><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">\u201d field to provide additional details about the design, limits, or implementation timeline.<\/span><\/p><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\"><br /><\/span><\/p><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 14.666666984558105px; white-space: pre-wrap;\">If you have any questions, please contact <\/span><a href=\"mailto:afraint@dvrpc.org\" style=\"font-size: 14.666666984558105px; white-space: pre-wrap;\" target=\"_self\">Aaron Fraint<\/a><span style=\"font-size: 14.666666984558105px; white-space: pre-wrap;\"> (Associate Manager, DVRPC Office of Mobility Analysis and Design)<\/span><br /><\/p><br /><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">The video below demonstrates the usage of this map. It can also be found by clicking the \u201c<b>?<\/b>\u201d icon on the map.<\/span><\/p><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\"><br /><\/span><\/p><center><video controls=\"\" height=\"500\" width=\"650\">\n  <source src=\"https://arcgis.dvrpc.org/dvrpc/apps/add.mp4\"><\/source><\/video><br /><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><br /><\/p><\/center><\/span>"
+                }
+            }
+        }, {
+            "position": {
+                "left": 155,
+                "top": 45,
+                "relativeTo": "map"
+            },
+            "placeholderIndex": 1,
+            "id": "_7",
+            "name": "Measurement",
+            "label": "Measure",
+            "version": "2.21",
+            "closeable": true,
+            "uri": "widgets/Measurement/Widget",
+            "config": {
+                "measurement": {
+                    "defaultAreaUnit": "esriAcres",
+                    "defaultLengthUnit": "esriMiles"
+                },
+                "showArea": false,
+                "showDistance": false,
+                "showLocation": true,
+                "defaultAreaUnit": "esriSquareMiles",
+                "defaultLengthUnit": "esriMiles",
+                "isOperationalLayer": false
             }
         }, {
             "position": {
@@ -177,55 +224,7 @@
                 "relativeTo": "map"
             },
             "placeholderIndex": 1,
-            "id": "_25",
-            "version": "2.21",
-            "closeable": true,
-            "uri": ""
-        }, {
-            "position": {
-                "left": 105,
-                "top": 45,
-                "height": 680,
-                "width": 750,
-                "relativeTo": "map"
-            },
-            "placeholderIndex": 1,
-            "id": "_26",
-            "name": "About",
-            "version": "2.21",
-            "closeable": true,
-            "uri": "widgets/About/Widget",
-            "config": {
-                "about": {
-                    "aboutContent": "<span id=\"docs-internal-guid-7b2b0e2f-7fff-9c22-a0e4-6432c7f43a84\"><p style=\"line-height:1.38;margin-top:0pt;margin-bottom:0pt;\"><br /><video controls=\"\" height=\"600\" width=\"700\">\n  <source src=\"https://arcgis.dvrpc.org/dvrpc/apps/add.mp4\"><\/source><\/video><\/p><\/span>"
-                }
-            },
-            "icon": "https://dvrpcgis.maps.arcgis.com/sharing/rest/content/items/${itemId}/resources/inConfig/01744714497975952.png",
-            "label": "How to add Bicycle Facilities"
-        }, {
-            "position": {
-                "left": 155,
-                "top": 45,
-                "relativeTo": "map"
-            },
-            "placeholderIndex": 1,
-            "id": "_27",
-            "name": "Measurement",
-            "version": "2.21",
-            "closeable": true,
-            "uri": "widgets/Measurement/Widget",
-            "config": {
-                "measurement": {
-                    "defaultAreaUnit": "esriSquareFeetUS",
-                    "defaultLengthUnit": "esriFeetUS"
-                },
-                "showArea": false,
-                "showDistance": true,
-                "showLocation": false,
-                "defaultAreaUnit": "esriSquareMiles",
-                "defaultLengthUnit": "esriMiles",
-                "isOperationalLayer": false
-            }
+            "id": "_8"
         }, {
             "position": {
                 "left": 255,
@@ -233,17 +232,17 @@
                 "relativeTo": "map"
             },
             "placeholderIndex": 2,
-            "id": "_28"
+            "id": "_9"
         }, {
             "uri": "widgets/OverviewMap/Widget",
             "position": {
-                "right": 0,
                 "bottom": 0,
+                "right": 0,
                 "zIndex": 1,
                 "relativeTo": "map"
             },
             "version": "2.21",
-            "id": "widgets_OverviewMap_Widget_29",
+            "id": "widgets_OverviewMap_Widget_10",
             "name": "OverviewMap"
         }, {
             "uri": "widgets/HomeButton/Widget",
@@ -253,7 +252,7 @@
                 "relativeTo": "map"
             },
             "version": "2.21",
-            "id": "widgets_HomeButton_Widget_30",
+            "id": "widgets_HomeButton_Widget_11",
             "name": "HomeButton"
         }, {
             "uri": "widgets/MyLocation/Widget",
@@ -263,16 +262,38 @@
                 "relativeTo": "map"
             },
             "version": "2.21",
-            "id": "widgets_MyLocation_Widget_31",
-            "name": "MyLocation"
+            "id": "widgets_MyLocation_Widget_12",
+            "name": "MyLocation",
+            "config": {
+                "locateButton": {
+                    "geolocationOptions": {
+                        "timeout": 15000
+                    },
+                    "highlightLocation": true,
+                    "useTracking": true,
+                    "scale": 50000
+                }
+            },
+            "visible": false
         }, {
             "uri": "widgets/AttributeTable/Widget",
-            "version": "2.21",
             "position": {
                 "relativeTo": "browser"
             },
-            "id": "widgets_AttributeTable_Widget_32",
+            "version": "2.21",
+            "id": "widgets_AttributeTable_Widget_13",
             "name": "AttributeTable",
+            "config": {
+                "layerInfos": [],
+                "table": {
+                    "pageSizeOptions": [25, 50, 100, 1000]
+                },
+                "hideExportButton": true,
+                "initiallyExpand": false,
+                "filterByMapExtent": true,
+                "allowTextSelection": true,
+                "syncWithLayers": false
+            },
             "visible": false
         }, {
             "uri": "widgets/Splash/Widget",
@@ -280,11 +301,11 @@
                 "relativeTo": "browser"
             },
             "version": "2.21",
-            "id": "widgets_Splash_Widget_33",
+            "id": "widgets_Splash_Widget_14",
             "name": "Splash",
             "config": {
                 "splash": {
-                    "splashContent": "<div><span id=\"docs-internal-guid-b026071f-7fff-4fad-d1c6-502422b24648\" style=\"color: rgb(105, 105, 105);\"><p style=\"text-align: center; line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\"><font size=\"5\">DVRPC Bicycle Network Inventory<\/font><\/span><\/p><br /><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">DVRPC is seeking the help of local planning partners to keep our region\u2019s bicycle network inventory up to date. This data is used in a variety of analytic contexts, including DVRPC\u2019s level of traffic stress (LTS) and regional travel demand models. Furthermore, the outputs of these analyses are used to shape our region. As a result, this map exists to ensure that DVRPC is aware of new facilities as they\u2019re implemented.<\/span><\/p><br /><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">Please use this map to inform DVRPC of new bicycle facilities or existing ones that are missing from the data. Planned projects that are funded and scheduled for implementation are also welcome here, using the \u201cStatus\u201d dropdown and an estimated implementation date. If necessary, feel free to use the \u201c<\/span><span style=\"font-size: 11pt; font-weight: 700; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">Notes<\/span><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">\u201d field to provide additional details about the design, limits, or implementation timeline. <\/span><\/p><br /><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">The video below demonstrates the usage of this map. It can also be found by clicking the \u201c?\u201d icon on the map.<\/span><\/p><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\"><br /><\/span><\/p><video controls=\"\" height=\"500\" width=\"650\">\n  <source src=\"https://arcgis.dvrpc.org/dvrpc/apps/add.mp4\"><\/source><\/video><br /><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\"><br /><\/span><\/p><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">If you have any questions, please contact <a href=\"mailto:afraint@dvrpc.org\" target=\"_self\">Aaron Fraint<\/a> (Associate Manager, DVRPC Office of Mobility Analysis and Design)<\/span><\/p><\/span><\/div>",
+                    "splashContent": "<span id=\"docs-internal-guid-b026071f-7fff-4fad-d1c6-502422b24648\"><p style=\"color: rgb(105, 105, 105); text-align: center; line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\"><font size=\"5\">DVRPC Bicycle Network Inventory<\/font><\/span><\/p><br /><p style=\"color: rgb(105, 105, 105); text-align: center; line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">DVRPC is seeking the help of local planning partners to keep our region\u2019s bicycle network inventory up to date. This data is used in a variety of analytic contexts, including DVRPC\u2019s Level of Traffic Stress (LTS) and regional travel demand models. Furthermore, the outputs of these analyses are used to shape our region. As a result, this map exists to ensure that DVRPC is aware of new facilities as they are constructed.<\/span><\/p><div style=\"text-align: center;\"><font color=\"#696969\"><span style=\"caret-color: rgb(105, 105, 105);\"><br /><\/span><\/font><\/div><p style=\"text-align: center; color: rgb(105, 105, 105); line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">Please use this map to inform DVRPC of new on- or off-street bicycle facilities missing from the data.  In addition, this map can collect data on existing features that might be inaccurate.  Planned projects that are funded and scheduled for implementation are also welcome here, using the \u201c<b>Status<\/b>\u201d dropdown and an estimated implementation date. If necessary, feel free to use the \u201c<\/span><span style=\"font-size: 11pt; font-weight: 700; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">Notes<\/span><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">\u201d field to provide additional details about the design, limits, or implementation timeline.<\/span><\/p><p style=\"text-align: center; color: rgb(105, 105, 105); line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\"><br /><\/span><\/p><p style=\"text-align: center; color: rgb(105, 105, 105); line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 14.666666984558105px; white-space: pre-wrap;\">If you have any questions, please contact <\/span><a href=\"mailto:afraint@dvrpc.org\" style=\"font-size: 14.666666984558105px; white-space: pre-wrap;\" target=\"_self\">Aaron Fraint<\/a><span style=\"font-size: 14.666666984558105px; white-space: pre-wrap;\"> (Associate Manager, DVRPC Office of Mobility Analysis and Design)<\/span><br /><\/p><div style=\"text-align: center;\"><br /><\/div><p style=\"text-align: center; color: rgb(105, 105, 105); line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\">The video below demonstrates the usage of this map. It can also be found by clicking the \u201c<b>?<\/b>\u201d icon on the map.<\/span><\/p><p style=\"color: rgb(105, 105, 105); line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 11pt; font-variant-ligatures: normal; font-variant-east-asian: normal; font-variant-position: normal; vertical-align: baseline; white-space: pre-wrap;\"><br /><\/span><\/p><center><video controls=\"\" height=\"500\" width=\"650\">\n  <source src=\"https://arcgis.dvrpc.org/dvrpc/apps/add.mp4\"><\/source><\/video><br /><p style=\"line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;\"><br /><\/p><\/center><\/span>\n<img src=\"https://www.dvrpc.org/PhotosAndLogos/img/dvrpc_logo_color.png\" width=\"15%\" />",
                     "requireConfirm": false,
                     "confirm": {
                         "text": "",
@@ -293,11 +314,11 @@
                     },
                     "showOption": false,
                     "confirmEverytime": true,
-                    "contentVertical": "middle",
+                    "contentVertical": "top",
                     "size": {
                         "mode": "wh",
                         "wh": {
-                            "w": 1200,
+                            "w": 1000,
                             "h": 950
                         }
                     },
@@ -310,7 +331,7 @@
                         "transparency": 0
                     },
                     "button": {
-                        "color": "#696969",
+                        "color": "#518dca",
                         "transparency": 0,
                         "text": "OK"
                     }
@@ -324,7 +345,7 @@
                 "relativeTo": "map"
             },
             "version": "2.21",
-            "id": "widgets_ZoomSlider_Widget_34",
+            "id": "widgets_ZoomSlider_Widget_15",
             "name": "ZoomSlider"
         }, {
             "uri": "widgets/ExtentNavigate/Widget",
@@ -334,9 +355,9 @@
                 "left": 7,
                 "relativeTo": "map"
             },
-            "version": "2.21",
-            "id": "widgets_ExtentNavigate_Widget_35",
-            "name": "ExtentNavigate"
+            "id": "widgets_ExtentNavigate_Widget_16",
+            "name": "ExtentNavigate",
+            "version": "2.21"
         }, {
             "uri": "widgets/FullScreen/Widget",
             "visible": false,
@@ -346,7 +367,7 @@
                 "relativeTo": "map"
             },
             "version": "2.21",
-            "id": "widgets_FullScreen_Widget_36",
+            "id": "widgets_FullScreen_Widget_17",
             "name": "FullScreen"
         }],
         "panel": {
@@ -365,13 +386,26 @@
             "right": 0,
             "bottom": 0
         },
-        "itemId": "f9e3a89383274672bda1f3c2b4658020",
-        "mapOptions": {},
+        "itemId": "3557cccfb69046fd9b503895bb9d52c3",
+        "mapOptions": {
+            "extent": {
+                "xmin": -8492640.104282022,
+                "ymin": 4772148.287309342,
+                "xmax": -8257214.057163793,
+                "ymax": 4962017.865569628,
+                "spatialReference": {
+                    "wkid": 102100
+                }
+            }
+        },
         "id": "map",
         "portalUrl": "https://dvrpcgis.maps.arcgis.com",
         "appProxy": {
-            "mapItemId": "f9e3a89383274672bda1f3c2b4658020",
+            "mapItemId": "3557cccfb69046fd9b503895bb9d52c3",
             "proxyItems": []
+        },
+        "mapRefreshInterval": {
+            "useWebMapRefreshInterval": true
         }
     },
     "widgetPool": {
@@ -385,148 +419,38 @@
                 "relativeTo": "map"
             }
         },
-        "widgets": [],
+        "widgets": [{
+            "name": "About",
+            "label": "Legend",
+            "version": "2.21",
+            "uri": "widgets/About/Widget",
+            "config": {
+                "about": {
+                    "aboutContent": "<img alt=\"BikeNetworkLegend.png\" width=70% id=\"img_1631302568863\" src=\"data:image/png;base64,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\" />"
+                }
+            },
+            "index": 3,
+            "id": "widgets_About_Widget_18",
+            "openAtStart": true
+        }],
         "groups": []
     },
     "mobileLayout": {
         "widgetOnScreen": {
-            "widgets": [{
-                "uri": "themes/FoldableTheme/widgets/HeaderController/Widget",
-                "position": {
-                    "left": 0,
-                    "top": 0,
-                    "right": 0,
-                    "height": 40,
-                    "relativeTo": "browser"
+            "widgets": {
+                "widgets/Scalebar/Widget": {
+                    "position": {
+                        "left": 7,
+                        "bottom": 40
+                    },
+                    "version": "1.4"
                 },
-                "version": "2.20"
-            }, {
-                "uri": "widgets/Scalebar/Widget",
-                "position": {
-                    "left": 7,
-                    "bottom": 40,
-                    "relativeTo": "map"
-                },
-                "version": "2.20"
-            }, {
-                "uri": "widgets/Search/Widget",
-                "position": {
-                    "left": 55,
-                    "top": 5
-                },
-                "version": "2.20"
-            }, {
-                "uri": "widgets/Coordinate/Widget",
-                "position": {
-                    "left": 7,
-                    "bottom": 17,
-                    "relativeTo": "map"
-                },
-                "version": "2.20"
-            }, {
-                "position": {
-                    "left": 55,
-                    "top": 45
-                }
-            }, {
-                "position": {
-                    "left": 105,
-                    "top": 45
-                }
-            }, {
-                "position": {
-                    "left": 155,
-                    "top": 45
-                }
-            }, {
-                "position": {
-                    "left": 205,
-                    "top": 45
-                }
-            }, {
-                "position": {
-                    "left": 255,
-                    "top": 45
-                }
-            }, {
-                "uri": "widgets/OverviewMap/Widget",
-                "position": {
-                    "right": 0,
-                    "bottom": 0,
-                    "zIndex": 1
-                },
-                "version": "2.20"
-            }, {
-                "uri": "widgets/HomeButton/Widget",
-                "inPanel": false,
-                "position": {
-                    "left": 7,
-                    "top": 75
-                },
-                "version": "2.20"
-            }, {
-                "uri": "widgets/MyLocation/Widget",
-                "inPanel": false,
-                "position": {
-                    "left": 7,
-                    "top": 110
-                },
-                "version": "2.20"
-            }, {
-                "uri": "widgets/AttributeTable/Widget",
-                "version": "2.20",
-                "position": {
-                    "relativeTo": "browser"
-                }
-            }, {
-                "uri": "widgets/Splash/Widget",
-                "visible": false,
-                "position": {
-                    "relativeTo": "browser"
-                },
-                "version": "2.20"
-            }, {
-                "uri": "widgets/ZoomSlider/Widget",
-                "visible": true,
-                "position": {
-                    "top": 5,
-                    "left": 7
-                },
-                "version": "2.20"
-            }, {
-                "uri": "widgets/ExtentNavigate/Widget",
-                "visible": false,
-                "position": {
-                    "top": 190,
-                    "left": 7
-                },
-                "version": "2.20"
-            }, {
-                "uri": "widgets/FullScreen/Widget",
-                "visible": false,
-                "position": {
-                    "top": 150,
-                    "left": 7
-                },
-                "version": "2.20"
-            }]
-        },
-        "map": {
-            "position": {
-                "left": 0,
-                "top": 40,
-                "right": 0,
-                "bottom": 0
-            }
-        },
-        "widgetPool": {
-            "panel": {
-                "uri": "themes/FoldableTheme/panels/FoldablePanel/Panel",
-                "position": {
-                    "top": 5,
-                    "right": 5,
-                    "bottom": 5,
-                    "zIndex": 5
+                "widgets/Coordinate/Widget": {
+                    "position": {
+                        "left": 7,
+                        "bottom": 17
+                    },
+                    "version": "1.4"
                 }
             }
         }
@@ -552,7 +476,7 @@
         "dataSources": {},
         "settings": {}
     },
-    "appItemId": "fbd5b9cf236747bb854c810f1d147581",
+    "logoAlt": "DVRPC",
     "logoLink": "https://www.dvrpc.org",
-    "logoAlt": "DVRPC"
+    "appItemId": "53f67770cbc548ba9f654bf81568b875"
 }
