@@ -176,7 +176,7 @@
             "position": {
                 "left": 105,
                 "top": 45,
-                "height": 950,
+                "height": 700,
                 "width" : 760,
                 "relativeTo": "map"
             },
